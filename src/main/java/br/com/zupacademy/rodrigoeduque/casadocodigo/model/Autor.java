@@ -11,6 +11,7 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column(unique = true)
     private String email;
     private String descricao;
     private LocalDateTime dataRegistro = LocalDateTime.now();

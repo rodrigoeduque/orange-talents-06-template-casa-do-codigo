@@ -1,14 +1,13 @@
 package br.com.zupacademy.rodrigoeduque.casadocodigo.controller;
 
+import br.com.zupacademy.rodrigoeduque.casadocodigo.config.validacao.EmailAutorDuplicadoValidator;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.controller.dto.AutorDto;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.controller.request.AutorRequest;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.model.Autor;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.repository.AutorRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -19,9 +18,16 @@ import java.net.URI;
 public class AutorController {
 
     AutorRepository autorRepository;
+    EmailAutorDuplicadoValidator emailAutorDuplicadoValidator;
 
-    public AutorController(AutorRepository autorRepository) {
+    public AutorController(AutorRepository autorRepository, EmailAutorDuplicadoValidator emailAutorDuplicadoValidator) {
         this.autorRepository = autorRepository;
+        this.emailAutorDuplicadoValidator = emailAutorDuplicadoValidator;
+    }
+
+    @InitBinder
+    public void init(WebDataBinder binder){
+        binder.addValidators(emailAutorDuplicadoValidator);
     }
 
     @PostMapping
