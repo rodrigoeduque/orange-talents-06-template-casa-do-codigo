@@ -1,6 +1,7 @@
 package br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.request;
 
 import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model.Autor;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.config.validacao.anotationValidator.valorunico.ValorUnico;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +17,7 @@ public class AutorRequest {
     @NotBlank
     @NotNull
     @Email
+    @ValorUnico(classe = Autor.class, atributo = "email", message = "Não foi possivel realizar o cadastro, pois este e-mail já existe em nossa base de dados")
     private String email;
 
     @NotBlank
@@ -30,7 +32,7 @@ public class AutorRequest {
     }
 
     public Autor convert() {
-        return new Autor(this.nome,this.email,this.descricao);
+        return new Autor(this.nome, this.email, this.descricao);
     }
 
     public String getEmail() {
