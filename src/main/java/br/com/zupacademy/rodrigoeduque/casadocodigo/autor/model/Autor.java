@@ -1,4 +1,4 @@
-package br.com.zupacademy.rodrigoeduque.casadocodigo.model;
+package br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

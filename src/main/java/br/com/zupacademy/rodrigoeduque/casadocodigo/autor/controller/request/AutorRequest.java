@@ -1,6 +1,6 @@
-package br.com.zupacademy.rodrigoeduque.casadocodigo.controller.request;
+package br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.request;
 
-import br.com.zupacademy.rodrigoeduque.casadocodigo.model.Autor;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model.Autor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

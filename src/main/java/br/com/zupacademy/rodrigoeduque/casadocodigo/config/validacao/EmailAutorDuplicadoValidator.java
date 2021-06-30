@@ -1,8 +1,8 @@
 package br.com.zupacademy.rodrigoeduque.casadocodigo.config.validacao;
 
-import br.com.zupacademy.rodrigoeduque.casadocodigo.controller.request.AutorRequest;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.model.Autor;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.request.AutorRequest;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model.Autor;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.repository.AutorRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -11,14 +11,17 @@ import java.util.Optional;
 
 @Component
 public class EmailAutorDuplicadoValidator implements Validator {
+
     private AutorRepository autorRepository;
 
     public EmailAutorDuplicadoValidator(AutorRepository autorRepository) {
+
         this.autorRepository = autorRepository;
     }
 
     @Override
     public boolean supports(Class<?> aClass) {
+
         return AutorRequest.class.isAssignableFrom(aClass);
     }
 

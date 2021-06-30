@@ -1,6 +1,6 @@
-package br.com.zupacademy.rodrigoeduque.casadocodigo.controller.dto;
+package br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.dto;
 
-import br.com.zupacademy.rodrigoeduque.casadocodigo.model.Autor;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model.Autor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;

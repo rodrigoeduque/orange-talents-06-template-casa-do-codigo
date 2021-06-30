@@ -1,10 +1,10 @@
-package br.com.zupacademy.rodrigoeduque.casadocodigo.controller;
+package br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller;
 
 import br.com.zupacademy.rodrigoeduque.casadocodigo.config.validacao.EmailAutorDuplicadoValidator;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.controller.dto.AutorDto;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.controller.request.AutorRequest;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.model.Autor;
-import br.com.zupacademy.rodrigoeduque.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.dto.AutorDto;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.controller.request.AutorRequest;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.model.Autor;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.autor.repository.AutorRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
