@@ -27,6 +27,9 @@ public class Autor {
         this.descricao = descricao;
     }
 
+    public Autor(String nome, String descricao) {
+    }
+
     public Long getId() {
         return id;
     }
@@ -46,6 +49,8 @@ public class Autor {
     public LocalDateTime getDataRegistro() {
         return dataRegistro;
     }
+
+
 
     @Override
     public String toString() {
