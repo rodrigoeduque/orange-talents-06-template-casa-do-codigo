@@ -42,7 +42,7 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate dataPublicacao,@NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
+    public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate dataPublicacao, @NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
@@ -68,5 +68,13 @@ public class Livro {
                 ", categoria=" + categoria +
                 ", autor=" + autor +
                 '}';
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

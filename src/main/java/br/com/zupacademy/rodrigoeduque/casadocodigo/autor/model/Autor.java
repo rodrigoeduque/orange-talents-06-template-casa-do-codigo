@@ -13,6 +13,7 @@ public class Autor {
     private String nome;
     @Column(unique = true)
     private String email;
+    @Column(length = 400)
     private String descricao;
     private LocalDateTime dataRegistro = LocalDateTime.now();
 

@@ -2,19 +2,19 @@ package br.com.zupacademy.rodrigoeduque.casadocodigo.livro.controller;
 
 import br.com.zupacademy.rodrigoeduque.casadocodigo.livro.LivroRepository;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.livro.controller.request.LivroRequest;
+import br.com.zupacademy.rodrigoeduque.casadocodigo.livro.controller.response.LivroResponseAll;
 import br.com.zupacademy.rodrigoeduque.casadocodigo.livro.model.Livro;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -36,10 +36,21 @@ public class LivroController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid LivroRequest request){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid LivroRequest request) {
         Livro livro = request.toModel(manager);
         manager.persist(livro);
-        LOGGER.info("request: " + request);
+        //LOGGER.info("request: " + request);
+        return ResponseEntity.ok().build();
     }
+
+    @GetMapping
+    public ResponseEntity<List<LivroResponseAll>> listar() {
+
+        List<Livro> livros = livroRepository.findAll();
+        //LOGGER.info("Livros: " + livros);
+
+        return ResponseEntity.ok().body(LivroResponseAll.convert(livros));
+    }
+
 
 }
