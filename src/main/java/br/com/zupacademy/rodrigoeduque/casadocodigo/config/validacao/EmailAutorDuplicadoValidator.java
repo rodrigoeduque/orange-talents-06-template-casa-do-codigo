@@ -12,30 +12,30 @@ import java.util.Optional;
 @Component
 public class EmailAutorDuplicadoValidator implements Validator {
 
-    private AutorRepository autorRepository;
+  private final AutorRepository autorRepository;
 
-    public EmailAutorDuplicadoValidator(AutorRepository autorRepository) {
+  public EmailAutorDuplicadoValidator(AutorRepository autorRepository) {
 
-        this.autorRepository = autorRepository;
+    this.autorRepository = autorRepository;
+  }
+
+  @Override
+  public boolean supports(Class<?> aClass) {
+
+    return AutorRequest.class.isAssignableFrom(aClass);
+  }
+
+  @Override
+  public void validate(Object o, Errors errors) {
+    if (errors.hasErrors()) {
+      return;
     }
+    AutorRequest request = (AutorRequest) o;
+    Optional<Autor> retornaAutor = autorRepository.findByEmail(request.getEmail());
 
-    @Override
-    public boolean supports(Class<?> aClass) {
-
-        return AutorRequest.class.isAssignableFrom(aClass);
+    if (retornaAutor.isPresent()) {
+      errors.rejectValue(
+          "email", null, "Este e-mail foi cadastrado na base de dados : " + request.getEmail());
     }
-
-    @Override
-    public void validate(Object o, Errors errors) {
-        if (errors.hasErrors()) {
-            return;
-        }
-        AutorRequest request = (AutorRequest) o;
-        Optional<Autor> retornaAutor = autorRepository.findByEmail(request.getEmail());
-
-        if (retornaAutor.isPresent()) {
-            errors.rejectValue("email", null, "Este e-mail foi cadastrado na base de dados : " + request.getEmail());
-        }
-
-    }
+  }
 }

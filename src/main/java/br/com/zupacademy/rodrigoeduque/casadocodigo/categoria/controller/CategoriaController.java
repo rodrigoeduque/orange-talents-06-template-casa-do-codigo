@@ -16,30 +16,32 @@ import javax.validation.Valid;
 @RequestMapping("/categorias")
 public class CategoriaController {
 
-    private CategoriaRepository categoriaRepository;
+  private CategoriaRepository categoriaRepository;
 
-    public CategoriaController(CategoriaRepository categoriaRepository) {
-        this.categoriaRepository = categoriaRepository;
-    }
+  public CategoriaController(CategoriaRepository categoriaRepository) {
+    this.categoriaRepository = categoriaRepository;
+  }
 
-/*    private CategoriaDuplicadoValidator categoriaDuplicadoValidator;
+  /*    private CategoriaDuplicadoValidator categoriaDuplicadoValidator;
 
-    public CategoriaController(CategoriaRepository categoriaRepository, CategoriaDuplicadoValidator categoriaDuplicadoValidator) {
-        this.categoriaRepository = categoriaRepository;
-        this.categoriaDuplicadoValidator = categoriaDuplicadoValidator;
-    }
+  public CategoriaController(CategoriaRepository categoriaRepository, CategoriaDuplicadoValidator categoriaDuplicadoValidator) {
+      this.categoriaRepository = categoriaRepository;
+      this.categoriaDuplicadoValidator = categoriaDuplicadoValidator;
+  }
 
-    @InitBinder
-    public void init(WebDataBinder binder){
-        binder.addValidators(categoriaDuplicadoValidator);
-    }*/
+  @InitBinder
+  public void init(WebDataBinder binder){
+      binder.addValidators(categoriaDuplicadoValidator);
+  }*/
 
-    @PostMapping
-    public ResponseEntity<CategoriaRequest> cadastrar(@RequestBody @Valid CategoriaRequest categoriaRequest, UriComponentsBuilder uriComponentsBuilder) {
+  @PostMapping
+  public ResponseEntity<CategoriaRequest> cadastrar(
+      @RequestBody @Valid CategoriaRequest categoriaRequest,
+      UriComponentsBuilder uriComponentsBuilder) {
 
-        Categoria categoria = categoriaRequest.toModel();
-        categoriaRepository.save(categoria);
+    Categoria categoria = categoriaRequest.toModel();
+    categoriaRepository.save(categoria);
 
-        return ResponseEntity.ok().build();
-    }
+    return ResponseEntity.ok().build();
+  }
 }
