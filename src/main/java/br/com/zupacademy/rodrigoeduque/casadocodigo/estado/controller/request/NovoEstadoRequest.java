@@ -43,7 +43,6 @@ public class NovoEstadoRequest {
     Optional<Pais> pais = paisRepository.findById(id_pais);
 
     if (pais.isPresent()) {
-      System.out.println(pais);
       return new Estado(nome, pais.get());
     }
     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "País Não encontrado");
